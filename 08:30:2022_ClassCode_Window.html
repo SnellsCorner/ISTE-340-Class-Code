@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>window play</title>
+	<script>
+
+		document.getElementById('fred');
+
+		//browser check
+		if(!document.getElementById){
+			window.location="legacy.html";
+		}
+
+		let newWin; //Hold our new window reference
+
+		function makeNew(){
+			let newWin = window.open('','width=300, height=300');
+			newWin.document.write("<h2>hi</h2>");
+		}
+
+		function closeNew(){
+			newWin.close();
+		}
+	
+	</script>
+</head>
+<body style="background-color:#999966;">
+<form>
+  <input type="button" value="Create New Window!" onclick="makeNew()"><br/>
+  <input type="button" value="Close the New Window!" onclick="closeNew()"><br/>
+</form>
+</body>
+</html>
+
+
+

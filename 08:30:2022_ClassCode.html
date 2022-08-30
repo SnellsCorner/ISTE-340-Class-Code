@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var x=5;
+        let y=6;
+        const z = '5';
+
+        if(x==y){ //to check something it is a ==
+            console.log(true);
+        }else{
+            console.log(false);
+        }
+
+        /*
+        = -set                      !
+        == check content, NOT type  !=
+        === check content & type    !==
+        */
+
+        for(let i = 0; i < document.getElementsByTagName('img').length; i++){
+            //Do something
+        }
+
+        for(let i = 0, len = document.getElementsByTagName('img').length; i<len; i++){
+            //Do something
+        }
+
+        //Functions
+        function addIt(){
+            let tot = 0;
+            for(let i=0, len=arguements.length; i<len; i++){
+                tot = tot + arguements[i];
+            }
+            return tot;
+        }
+
+        const r = addIt(5, 6, 7);
+
+        //Function Expressions
+
+        const dansFunct = function(arg1, arg2){ //Create new variable and assign it an anonymous function
+            //code goes here
+        }
+
+        function dansFunct(args1, args2){
+            //code goes here
+        }
+
+
+        //Arrow Function.  Both of these mean the same thing
+        const square = x => x * x;
+
+        function square(x){
+            return x * x;
+        } 
+
+        let y1 = Math.random();
+
+        var m = new Math();
+        let y2 = m.random();
+
+        //ARRAYS. All of these are the same thing.
+        var newArr = new Array(3);
+        newArr[0]='dan';
+        newArr[1]=34;
+        newArr[2]=6.1;
+
+        var newArr=new Array("dan", 34, 6.1);
+
+        var newArr= ["dan", 34, 6.1];
+        
+        obj['test'] = 5;
+
+        let obj = {
+            test:5
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../load.js"></script>
+    <script src="../load.js" async></script> 
+    <script src="../load.js" defer></script>
+
+    <script>
+        //Use strict stops you from doing stupid shit (Like deleting window)
+
+        "Use strict";
+
+        ////////////scope////////////
+    /*    console.log('test with let');
+        let x=5;
+        const c = "hello";
+        function letTest(){
+            let x = 12;
+            if(true){
+                let x = 112;
+                console.log(x, c);
+            }
+            console.log(x, c);
+        }
+
+        letTest();
+        console.log(x, c); //5
+
+
+
+
+        console.log('end test with let'); */
+        console.log('test with var');
+        var dan = 5;
+
+        function varTest(){
+            var dan = 6;
+            console.log("from in the function: " + dan);
+            console.log("from in the function, the global: " + window.dan);
+        }
+
+        varTest();
+        console.log("from the root: " + dan);
+
+
+        console.log('end test with var');
+        ////////////scope////////////
+
+
+        var obj = {
+            ['name']:['dan', 'scott', 'bogaard'],
+            ['job']:['rit', 'profess'],
+            funct:function(x){console.log(x)}
+        }
+
+        console.log(obj['name'][1]); //displays 'scott'
+
+        for(let i in obj){
+            obj.funct(obg[i][1]);
+            console.log(obj[i][1]);
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
