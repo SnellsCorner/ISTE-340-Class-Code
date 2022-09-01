@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <title>image play!</title>
+<style type="text/css">
+/*<![CDATA[*/
+	  /*big image placement*/
+	  #bigPlace {position:absolute; top:115px; left:22px;}
+	  body{background:#999966;}
+	  .table { position:absolute;
+	   left:10px; 
+	   top:380px;
+	   z-index:70;
+	   padding:3px;
+	   border-bottom-width:3px; 
+	   border-left-width: 3px; 
+	   border-right-width: 3px; 
+	   border-top-width: 3px; 
+	   border-style: outset; 
+	   border-color:#336699; 
+	  }
+/*]]>*/
+</style>
+<script type="text/javascript">
+
+	//CDATA is short for character data
+//<![CDATA[ 
+
+	//Bad way to do it because it only loads one image.
+	if(document.images){
+		var x = new Image();
+		x.src = "media/gal2Big.jpg";
+	}
+
+	var imgArr = []; //To hold all of our larger images
+
+	function init(howMany){
+		for(let i=0; i<howMany; i++){
+			imgArr[i] = new Image();
+			imgArr[i].src = "media/gal" + (i + 1) + "Big.jpg";
+		}
+	}
+
+	function changeAll(dom){
+		//what is that?
+		//console.log(this); //window!
+		console.log(dom); //The image that was clicked
+		/*
+		let start = dom.src.lastIndexOf('/gal') + 4;
+		let end = dom.src.lastIndexOf('.jpg');
+		let num = dom.src.substring(start, end);
+
+		document.getElementById('bigPic').src = imgArr[(num - 1)].src;
+		*/
+
+		//with data-dash!
+		let data = parseInt(dom.getAttribute('data-imgNum'));
+		document.getElementById('bigPic').src = imgArr[data-1].src;
+	}
+
+//]]>
+</script>
+</head>
+
+<!-- Calls the init() function after everything has finished loading -->
+<body onload="init( document.getElementById('loader').getElementsByTagName('img').length);">
+    <!--Big Pics-->
+    <div id="bigPlace">
+        <img src="media/gal1Big.jpg" name="bigPic" alt="big pics!" id="bigPic" />
+    </div><!--div holding all of the thumbs-->
+    <div class="table">
+        <div id="loader" style="height:90px; width:400px; overflow:auto; white-space: nowrap;">
+
+			<!-- Realistically PHP is going to loop through all of this stuff and you wont have it hard coded. -->
+            <img src="media/gal1.jpg" data-imgNum="1" onclick="changeAll(this)" border="0" onmouseover="this.style.cursor='pointer';" alt="image"/> 
+            <img src="media/gal2.jpg" data-imgNum="2" onclick="changeAll(this)" border="0" onmouseover="this.style.cursor='pointer';" alt="image"/> 
+            <img src="media/gal3.jpg" data-imgNum="3" onclick="changeAll(this)" border="0" onmouseover="this.style.cursor='pointer';" alt="image"/> 
+            <img src="media/gal4.jpg" data-imgNum="4" onclick="changeAll(this)" border="0" onmouseover="this.style.cursor='pointer';" alt="image"/> 
+            <img src="media/gal5.jpg" data-imgNum="5" onclick="changeAll(this)" border="0" onmouseover="this.style.cursor='pointer';" alt="image"/> 
+            <img src="media/gal6.jpg" data-imgNum="6" onclick="changeAll(this)" border="0" onmouseover="this.style.cursor='pointer';" alt="image"/>
+        </div>
+    </div>
+</body>
+</html>
