@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>DOM Creation</title>
+<script type="text/javascript">
+//<![CDATA[
+	//some possible methods/props you will use! (know them!)
+	//createElement, setAttribute, appendChild, replaceChild, createTextNode, childNodes[], firstChild, 
+	//nodeType, nodeName, nodeValue, getElementById, getElementsByTagName
+	
+	function createText(){
+		let hEle = document.createElement('h1');
+		//<h1/>
+		hEle.setAttribute('class', 'Fred');
+		// hEle.setAttribute('style', 'color:green');
+		hEle.style="color:green;";
+		//<h1 id="Fred" style="color:green;" />
+		hEle.appendChild(document.createTextNode("dyn creation is fun!"))
+
+		document.getElementsByTagName('body')[0].appendChild(hEle);
+
+		//image
+		let imgEle = document.createElement('img');
+		imgEle.setAttribute('src', "california.jpg");
+		imgEle.alt = "look at me";
+
+		document.getElementsByTagName('body')[0].appendChild(imgEle);
+
+		let ulEle = document.createElement('ul');
+
+		for(let i=0; i < 5; i++){
+			let liE = document.createElement('li');
+			liE.appendChild(document.createTextNode("I am element: " + i));
+			ulEle.appendChild(liE);
+		}
+		document.getElementsByTagName('body')[0].appendChild(ulEle);
+
+		let rEle = document.createElement('input');
+		rEle.setAttribute('type', 'radio');
+		rEle.name = "gender";
+		document.getElementsByTagName('body')[0].appendChild(rEle);
+
+	}
+	
+	
+//]]>
+</script>
+</head>
+<body>
+<div id="buttons" style="position:absolute; top:8px; left:200px">
+  <button onclick="createText();">Create It!</button>
+</div>
+<body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
