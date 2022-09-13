@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>DOM Placement</title>
+<script type="text/javascript">
+	function changeMe(){
+      let rEle = document.createElement('input');
+      rEle.setAttribute('type', 'range');
+
+      //node.appendChild()
+      //parent.ToGoAtEndOf.appendChild(ele)
+      //end of body
+      //document.getElementsByTagName('body')[0].appendChild(rEle);
+      //document.getElementById('text').appendChild(rEle);
+      //$('text').appendChild(rEle);
+      //$$('body', 0).appendChikd(rEle);
+
+      //node.insertBefore();
+      //parentToGoIn.insertBefore(ele, childOfParntToGoInFrontOf);
+
+      //These two are accessing the same thing
+      //$$('body', 0).insertBefore(rEle, $$('body', 0).firstChild);
+      //$$('body', 0).insertBefore(rEle, $('everything'));
+      //$('text').insertBefore(rEle, $('text').childNodes[0]);
+      //$('everything').insertBefore(rEle, $('moreText'))
+
+      //node.removeChild();
+      //parentHoldingChild.removeChild(childOfParentToKill);
+      //$('everything').removeChild($('moreText') );
+      //$('everything').removeChild($('buttons') );
+
+      //node.replaceChild()
+      //parent.replaceChild(ele, childOfParentToReplace);
+
+      //$('everything').replaceChild(rEle, $('text'));
+      //$('moreText').replaceChild(rEle, $('moreText').firstChild);
+
+      //node.cloneNode();
+      //nodeToClone.cloneNode(t/f);
+      //let c = $('everything').cloneNode(true);
+      //$$('body', 0).appendChild(c);
+
+      //NO USE OF INNERHTML ON P1 AT ALL!!!
+      $('moreText').innerHTML += "<h2>fred</h2> ";
+
+	}
+
+  function $(id){
+      return document.getElementById(id);
+  }
+
+  function $$(tag, num){
+      return document.getElementsByTagName(tag)[num];
+  }
+	
+</script>
+</head>
+<body>
+  <div id="everything">
+    <div id="buttons" style="position:absolute; top:8px; left:200px">
+      <button onclick="changeMe();">Do It!</button>
+    </div>
+
+    <div id="text" style="border:2px solid red;width:10em;">
+      Text
+    </div>
+    
+    <div id="moreText" style="border:2px solid orange;width:10em;">
+      More text
+    </div>
+   
+    <hr/>
+  </div>
+</body>
+</html>

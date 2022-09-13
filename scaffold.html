@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var data = {
+            css: "", 
+            init:["choose", "men", "women"],
+            men: ["how do you like 'em", "tall", "short", ],
+            short: ["widht?", "husky like", "thin", ],
+                     "husky like":["???", "x", "y"]
+        }
+
+        const APP = (function(){
+
+            function construct(){
+                //build the selects!
+                UTIL.moveLeft()
+
+            }
+
+            let y = 7;
+
+            return {
+                construct:construct,
+                y:y
+            }
+
+        })(); //end APP
+
+        const UTIL = (function(){
+            function ml(){
+
+            }
+
+            function moveUp(){
+                
+            }
+
+            let x = 5;
+
+            return{
+                //external name: Internal name
+                moveLeft:ml,
+                moveUp:moveUp,
+                x:x
+            }
+
+        })();
+
+
+    </script>
+</head>
+<body onload="APP.y">
+
+
+</body>
+</html>
