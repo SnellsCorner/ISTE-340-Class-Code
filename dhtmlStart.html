@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>DHTML FUN</title>
+  	<script type="text/javascript">
+		  function changeAll(dom, rule){
+			//change color
+			// document.getElementById('coolBeans').style.color = dom.value;
+
+			document.getElementById('coolBeans').style[rule] = dom.value;
+
+		  }
+
+		  function move(id, dx, speed, end){
+			  let dom = document.getElementById(id);
+			  if(parseInt(dom.style.left) < 300){
+					dom.style.left = parseInt(dom.style.left) + 2 + 'px';
+					setTimeout(function(){move(id, dx, speed, end);}, speed);
+			  }
+		  }
+		
+  	</script>
+</head>
+<body>
+	<!-- for the mouseout event, dont style it to the color of the text. Just make the style = and empty string so that there is no new color when you mouseout -->
+	<div onmouseover="this.style.color='red'; this.style.cursor='pointer';" onmouseout="this.style.color='';" style="border:2px solid grey;width:10em;margin-bottom:30px;">
+		mouseover test
+	</div>
+	<form action="" method="">
+ 		Put in a color name (or hex):<input type="text" size="30" onchange="changeAll(this, 'color')"/><br/>
+ 		Put in a font size (like 12pt):<input type="text" size="30" onchange="changeAll(this, 'fontSize')"/><br/>
+ 		Put in a font family:<input type="text" size="30" onchange="changeAll(this, 'fontFamily')"/><br/>
+ 		Put in a new left (like 100px):<input type="text" size="30" onchange="changeAll(this, 'left')"/><br/>
+ 		Put in a new top (like 200px):<input type="text" size="30" onchange="changeAll(this, 'top')"/><br/>
+ 		Put in a background color:<input type="text" size="30" onchange="changeAll(this, 'backgroundColor')"/><br/>
+		Put in a padding:<input type="text" size="30" onchange="changeAll(this, 'padding')"/>
+
+	</form> 
+	<div id="coolBeans" style="border:2px solid red;width:10em;position:relative;">Some text to control</div>
+	<hr/>
+	<button id="button1" onclick="move('move', 2, 10, 1000)">Click me</button>
+	<div id="move" style="border:2px solid orange;width:10em;position:relative;left:0px">
+		Something to slide...
+	</div>
+	<button id="button2" onclick="move('move2', 5, 5, 3000)">Click me</button>
+	<div id="move2" style="border:2px solid green;width:10em;position:relative;left:0px">
+		Something to slide2...
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
