@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<script>
+			function sendArgs(x){
+				console.log(x);
+				console.log(this);
+			}
+
+			function noArgs(){
+				console.log('from Args',this);
+			}
+
+			function create(){
+				var butEle = document.createElement('button');
+				butEle.appendChild(document.createTextNode('press me'));
+
+				//Set attribute
+				butEle.setAttribute('onclick', 'sendArgs("hello from setAttribute")');
+
+				butEle.onmouseover = function(){sendArgs("hello from js prop event");};
+				butEle.onmouseout = noArgs;
+
+				document.getElementsByTagName('body')[0].appendChild(butEle);
+			}
+	
+		</script>
+	</head>
+	<body onload="create()">
+
+	</body>
+</html>

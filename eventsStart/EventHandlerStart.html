@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Events</title>
+	<script type="text/javascript">
+	//For Image 1 --------------------------------------------------------------------
+	//All as HTML attributes
+	// -since the call to 'this' is within the attribute, it refers to the element.
+	function simpleFunction(x){
+		console.log(x);
+		console.log(this);
+		document.images[2].removeEventListener();
+	}
+
+	function withNoArgs(){
+		console.log('no args', this);
+		this.onclick = null;
+	}
+	function withArgs(x){
+		console.log(x, this);
+	}
+
+
+	function img1(){
+		document.images[1].onclick=withNoArgs;
+		document.images[1].onmouseout = withArgs("from the js prop out");};
+	
+	
+	//For Image 2 --------------------------------------------------------------------
+	//assign an event to Image 2
+
+	var handler = function(){withArgs('from addEventListener');};
+
+	function img2(){
+		var dom = document.getElementsByTagName('img')[2];
+		dom.addEventListener('click', simplefunction, true);
+		dom.addEventListener('click', withNoArgs, {once:true}, true);
+		dom.addEventListener('click', function(){withArgs('from addEventListener');}, true);
+	}
+
+	  
+	  
+    //For Image 3 --------------------------------------------------------------------
+	//attach an event to Image 3
+
+
+
+	</script>
+</head>
+<body onload="img1();">
+
+  <h1>Image 1 (html attribute):</h1><img src="pic.jpg"
+  onclick="console.log(this); simpleFunction('hello from an html attr');"/>
+  
+  <h1>Image 2 (JavaScript property):</h1><img src="pic.jpg"/>
+  
+  <h1>Image 3 (JavaScript listener):</h1><img src="pic.jpg"/>
+
+</body>
+</html>
