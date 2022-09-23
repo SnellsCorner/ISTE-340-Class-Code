@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Storage Example</title>
+	<script type="text/javascript" src="cookies.js"></script>
+	<script type="text/javascript">
+		////////////////////////////Careful - does not work on file:// (MUST upload to gibson)
+		//////IF YOU DO ANYTHING LIKE THIS ON YOUR PROJECT YOU WILL GET A "0" for STORAGE
+		//localStorage
+		function checkColor(color){
+
+			//does it know local storage
+			if(window.localStorage){
+
+				//if the user sent in a color
+				if(color){
+					localStorage.setItem('bgColor', color);
+				}
+
+				//change the color (if there is a color in localstorage)
+				if(localStorage.getItem('color')){
+					document.getElementsByTagName('body')[0].style.backgroundColor = localStorage.getItem('bgColor');
+				}
+
+			}else{
+				//Chuck them
+				window.location = "legacy.html";
+			}
+		}
+
+		function clearIt(){
+			localStorage.removeItem('bgColor');
+			document.getElementsByTagName('body')[0].style.backgroundColor = '';
+
+		}
+
+
+		//cookie
+		if(GetCookie('user_id') == null){
+			let name = prompt("give name now", '');
+
+			document.write('<h1>Welcome, ' + name + '- your first time!</h1>');
+			SetCookie('user_id', name);
+			SetCookie('user_id', 2);
+
+
+		}else{
+			document.write('welcome back, ' + GetCookie('user_id') + " you have been here " + GetCookie('hit_count') + "times");
+
+			SetCookie('hit_count', GetCookie('hit_count') + 1);
+		}
+
+	</script>
+</head>
+<body onload="checkColor()">
+<div style="position:absolute;right:10px;bottom:10px;background:#c9c;">
+	Change your style. <span style="pointer:finger" onclick="checkColor('red')">Red</span> | 
+	<span style="pointer:finger" onclick="checkColor('green')">Green</span> | 
+	<span style="pointer:finger" onclick="clearIt()">Clear</span>
+</div>
+</body>
+</html>
