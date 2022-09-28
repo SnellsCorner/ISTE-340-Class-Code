@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>.:AJAX - fetch() &amp; XHRHttpRequest:.</title>
+<script>
+///////////////////////////////////////////////////////////////////
+//XHRHttpRequest Object
+//first, we create a XMLHttpRequest Object...
+
+let XHRObj = new XMLHttpRequest();
+
+if(!XHRObj){
+	console.log("issues creating xhr");
+}
+
+function doXHR(){
+	XHRObj.open('get', 'data.xml');
+	XHRObj.onreadystatechange = getResponse;
+}
+
+function getResponse(){
+	//console.log(XHRObj.readyState);
+	if(XHRObj.readyState == 4 && XHRObj.status == 200){
+		//console.log(XHRObj.responseXML);
+		let xmlDoc = XHRObj.responseXML;
+		//go through them all
+		for(let i = 0, len = xmlDoc.getElementsByTagName('who').length; i<len; i++){
+			let div  = document.createElement('div');
+			let t = xmlDoc.getElementsByTagName('who').item(i).firstChild.data;
+			div.appendChild(document.createTextNode(t));
+			document.getElementById('xhrContainer').apendChild(div);
+		}
+	}
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////
+//fetch()
+//https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+// function doFetch(){
+// 	fetch('data.js')
+// 		.then(response => response.json())
+// 		.then(data => fetchDisplay(data))
+// 		.catch(error => console.log(error));
+// }
+
+function doFetch(){
+	fetch('data.js')
+		.then(response => {
+			
+			if(response.status == 200){
+				return response.json();
+			}else{
+				throw new Error("something is wrong in fetch");
+			}
+		})
+		.then(data => fetchDisplay(data))
+		.catch(error => console.log(error));
+}
+
+function fetchDisplay(jsData){
+	for(let i = 0, len = jsData.who.length; i < len; i++){
+		let div = document.createElement('div');
+		div.appendChild(document.createTextNode(jsData.who[i]));
+		document.getElementById('fetchContainer').appendChild(div);
+	}
+}
+
+///////////////////////////////////////////////////////////////////
+</script>
+<style type="text/css">
+	#xhrContainer, #fetchContainer {
+		overflow:auto; 
+		width:200px; 
+		height:100px; 
+		border:black 10px solid;
+		background:#ccc;
+		padding:10px;
+	}
+</style>
+</head>
+<body onload="doXHR();doFetch();">
+	XHR
+	<div id="xhrContainer">
+		
+	</div>
+	<hr/>
+	Fetch
+	<div id="fetchContainer">
+
+	</div>
+</body>
+</html>
