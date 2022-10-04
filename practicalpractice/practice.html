@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+function init(){
+    let hEle = document.createElement('h1');
+    hEle.appendChild(document.createTextNode("Hi Practical"));
+    hEle.id = 'hID';
+    hEle.style.opacity = 0;
+    document.getElementsByTagName('body')[0].appendChild(hEle);
+    fadeMe('hId');
+
+    function fadeMe(id){
+        let dom = document.getElementById(id);
+        if(parseFloat(dom.style.opacity) < 1){
+            dom.style.opacity = parseFloat(dom.style.opacity) + 0.05 + '';
+            setTimeout(function(){(id);}, 30);
+        }
+    }
+}
+
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+   
+</html>
