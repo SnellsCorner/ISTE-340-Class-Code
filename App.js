@@ -1,4 +1,5 @@
 import React from 'react';
+import People from './components/People';
 import './App.css';
 import getData from './util/getData.js';
 
@@ -20,13 +21,16 @@ export default class App extends React.Component{
 
     if(!loaded) return (<div><h1>Loading...</h1></div>);
 
-    return (<div>
+    return (<div className='App'>
           <h1>Welcome to the iSchool website...</h1>
           <h2>{about.title}</h2>
           <h4>{about.description}</h4>
           <h3>{about.quote}</h3>
           <h3>---{about.quoteAuthor}</h3>
-
+          {/* now we can start loading our components */}
+          <hr/>
+          {/* I can write a comment! */}
+          <People/>
       </div>
       );
 
